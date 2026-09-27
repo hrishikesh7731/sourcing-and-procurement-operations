@@ -23,10 +23,9 @@ public class ProcurementCompanyController {
     }
 
     @PostMapping("/on-board")
-    public ResponseEntity onBoardProcurementCompany(@RequestBody ProcurementCompanyRegistrationDto procurementCompanyRegistrationDto){
+    public ResponseEntity<ProcurementCompany> onBoardProcurementCompany(@RequestBody ProcurementCompanyRegistrationDto procurementCompanyRegistrationDto){
 
         ProcurementCompany procurementCompany=procurementCompanyService.onBoardProcurementCompany(procurementCompanyRegistrationDto);
         return new ResponseEntity<>(procurementCompany, HttpStatus.CREATED);
     }
 }
-k

@@ -4,7 +4,9 @@ import com.supply_chain_easy.sourcing_and_procurement_operations.dtos.Procuremen
 import com.supply_chain_easy.sourcing_and_procurement_operations.transformers.CompanyTransformer;
 import com.supply_chain_easy.supply_chain_base_operations.models.ProcurementCompany;
 import com.supply_chain_easy.supply_chain_base_operations.repositories.ProcurementCompanyRepository;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ProcurementCompanyService {
 
     private final CompanyTransformer companyTransformer;

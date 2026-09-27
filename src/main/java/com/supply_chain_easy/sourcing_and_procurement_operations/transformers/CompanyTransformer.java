@@ -1,11 +1,11 @@
 package com.supply_chain_easy.sourcing_and_procurement_operations.transformers;
-
 import com.supply_chain_easy.sourcing_and_procurement_operations.dtos.ProcurementCompanyRegistrationDto;
 import com.supply_chain_easy.supply_chain_base_operations.enums.CompanyStatus;
 import com.supply_chain_easy.supply_chain_base_operations.models.ProcurementCompany;
-
+import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
+@Component
 public class CompanyTransformer {
 
     public ProcurementCompany transformProcurementCompanyDtoToModel(ProcurementCompanyRegistrationDto dto){
