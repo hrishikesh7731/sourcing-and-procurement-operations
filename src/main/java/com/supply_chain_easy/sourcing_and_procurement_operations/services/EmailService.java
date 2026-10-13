@@ -4,9 +4,11 @@ import com.supply_chain_easy.supply_chain_base_operations.models.Employee;
 import com.supply_chain_easy.supply_chain_base_operations.models.ProcurementCompany;
 import com.supply_chain_easy.supply_chain_base_operations.services.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
+@Service
 public class EmailService {
 
     private final TemplateEngine templateEngine;
