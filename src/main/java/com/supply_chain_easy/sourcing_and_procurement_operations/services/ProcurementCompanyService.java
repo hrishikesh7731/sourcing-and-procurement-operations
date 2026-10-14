@@ -2,6 +2,7 @@ package com.supply_chain_easy.sourcing_and_procurement_operations.services;
 
 import com.supply_chain_easy.sourcing_and_procurement_operations.dtos.ProcurementCompanyRegistrationDto;
 import com.supply_chain_easy.sourcing_and_procurement_operations.transformers.CompanyTransformer;
+import com.supply_chain_easy.supply_chain_base_operations.enums.ApplicationCode;
 import com.supply_chain_easy.supply_chain_base_operations.models.Employee;
 import com.supply_chain_easy.supply_chain_base_operations.models.ProcurementCompany;
 import com.supply_chain_easy.supply_chain_base_operations.repositories.ProcurementCompanyRepository;
@@ -27,7 +28,7 @@ public class ProcurementCompanyService {
         ProcurementCompany procurementCompany= companyTransformer.transformProcurementCompanyDtoToModel(procurementCompanyRegistrationDto);
         procurementCompany=procurementCompanyRepository.save(procurementCompany);
 
-        Employee adminUser=companyService.createAdminUserForCompany(procurementCompany);
+        Employee adminUser=companyService.createAdminUserForCompany(procurementCompany,ApplicationCode.SPO);
         return procurementCompany;
 
     }

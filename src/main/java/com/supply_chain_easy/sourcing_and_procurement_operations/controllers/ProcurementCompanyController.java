@@ -4,6 +4,7 @@ import com.supply_chain_easy.sourcing_and_procurement_operations.dtos.Procuremen
 import com.supply_chain_easy.sourcing_and_procurement_operations.services.EmailService;
 import com.supply_chain_easy.sourcing_and_procurement_operations.services.ProcurementCompanyService;
 import com.supply_chain_easy.supply_chain_base_operations.models.Employee;
+import com.supply_chain_easy.supply_chain_base_operations.enums.ApplicationCode;
 import com.supply_chain_easy.supply_chain_base_operations.models.ProcurementCompany;
 import com.supply_chain_easy.supply_chain_base_operations.repositories.ProcurementCompanyRepository;
 import com.supply_chain_easy.supply_chain_base_operations.services.CompanyService;
@@ -41,9 +42,9 @@ public class ProcurementCompanyController {
 
         ProcurementCompany procurementCompany=procurementCompanyService.onBoardProcurementCompany(procurementCompanyRegistrationDto);
         procurementCompany=procurementCompanyRepository.save(procurementCompany);
-        Employee adminEmployee=companyService.createAdminUserForCompany(procurementCompany);
+        Employee adminEmployee=companyService.createAdminUserForCompany(procurementCompany,ApplicationCode.SPO);
         emailService.sendRegistrationEmailToProcurementCompany(procurementCompany,adminEmployee);
 
-        return new ResponseEntity<>(procurementCompany, HttpStatus.OK);
+        return new ResponseEntity<>(procurementCompany, HttpStatus.CREATED);
     }
 }
