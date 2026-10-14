@@ -6,7 +6,6 @@ import com.supply_chain_easy.sourcing_and_procurement_operations.services.Procur
 import com.supply_chain_easy.supply_chain_base_operations.models.Employee;
 import com.supply_chain_easy.supply_chain_base_operations.enums.ApplicationCode;
 import com.supply_chain_easy.supply_chain_base_operations.models.ProcurementCompany;
-import com.supply_chain_easy.supply_chain_base_operations.repositories.ProcurementCompanyRepository;
 import com.supply_chain_easy.supply_chain_base_operations.services.CompanyService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,16 +22,13 @@ import org.springframework.web.bind.annotation.RestController;
 public class ProcurementCompanyController {
 
     private final ProcurementCompanyService procurementCompanyService;
-    private final ProcurementCompanyRepository procurementCompanyRepository;
     private final CompanyService companyService;
     private final EmailService emailService;
 
     @Autowired
     public ProcurementCompanyController(ProcurementCompanyService procurementCompanyService,
-                                        ProcurementCompanyRepository procurementCompanyRepository,
                                         CompanyService companyService,EmailService emailService){
         this.procurementCompanyService=procurementCompanyService;
-        this.procurementCompanyRepository=procurementCompanyRepository;
         this.companyService=companyService;
         this.emailService=emailService;
     }
@@ -41,7 +37,6 @@ public class ProcurementCompanyController {
     public ResponseEntity<ProcurementCompany> onBoardProcurementCompany(@RequestBody ProcurementCompanyRegistrationDto procurementCompanyRegistrationDto){
 
         ProcurementCompany procurementCompany=procurementCompanyService.onBoardProcurementCompany(procurementCompanyRegistrationDto);
-        procurementCompany=procurementCompanyRepository.save(procurementCompany);
         Employee adminEmployee=companyService.createAdminUserForCompany(procurementCompany,ApplicationCode.SPO);
         emailService.sendRegistrationEmailToProcurementCompany(procurementCompany,adminEmployee);
 

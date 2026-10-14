@@ -14,21 +14,17 @@ public class ProcurementCompanyService {
 
     private final CompanyTransformer companyTransformer;
     private final ProcurementCompanyRepository procurementCompanyRepository;
-    private final CompanyService companyService;
 
     public ProcurementCompanyService(CompanyTransformer companyTransformer,
-                                     ProcurementCompanyRepository procurementCompanyRepository,
-                                     CompanyService companyService){
+                                     ProcurementCompanyRepository procurementCompanyRepository){
         this.companyTransformer=companyTransformer;
         this.procurementCompanyRepository=procurementCompanyRepository;
-        this.companyService=companyService;
     }
 
     public ProcurementCompany onBoardProcurementCompany(ProcurementCompanyRegistrationDto procurementCompanyRegistrationDto){
         ProcurementCompany procurementCompany= companyTransformer.transformProcurementCompanyDtoToModel(procurementCompanyRegistrationDto);
         procurementCompany=procurementCompanyRepository.save(procurementCompany);
 
-        Employee adminUser=companyService.createAdminUserForCompany(procurementCompany,ApplicationCode.SPO);
         return procurementCompany;
 
     }

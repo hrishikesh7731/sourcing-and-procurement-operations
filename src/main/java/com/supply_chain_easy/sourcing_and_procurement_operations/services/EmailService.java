@@ -65,7 +65,7 @@ public class EmailService {
         context.setVariable("threeWayMatchingEnabled", procurementCompany.getThreeWayMatchingEnabled());
 
         // I need to get html Content populated with the variable values
-        String htmlContent = templateEngine.process("procurement-compnay-registration", context);
+        String htmlContent = templateEngine.process("procurement-company-registration", context);
         notificationService.sendEmailNotification(htmlContent, admin.getWorkEmail(), "Welcome to Sourcing & Procurement Operations");
     }
 }

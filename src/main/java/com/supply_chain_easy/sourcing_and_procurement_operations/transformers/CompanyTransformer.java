@@ -2,6 +2,7 @@ package com.supply_chain_easy.sourcing_and_procurement_operations.transformers;
 import com.supply_chain_easy.sourcing_and_procurement_operations.dtos.ProcurementCompanyRegistrationDto;
 import com.supply_chain_easy.supply_chain_base_operations.enums.CompanyStatus;
 import com.supply_chain_easy.supply_chain_base_operations.models.ProcurementCompany;
+import com.supply_chain_easy.supply_chain_base_operations.utilites.SystemUtility;
 import org.springframework.stereotype.Component;
 import java.time.LocalDateTime;
 
@@ -63,7 +64,7 @@ public class CompanyTransformer {
                 .updatedAt(LocalDateTime.now())
                 .createdBy("system")
                 .updatedBy("system")
-                .companyId("COMP-001")
+                .companyId(SystemUtility.generateId("COMP"))
                 // Default values
                 .status(CompanyStatus.UNDER_REVIEW)
                 .active(false)
